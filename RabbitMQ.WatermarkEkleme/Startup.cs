@@ -28,7 +28,7 @@ namespace RabbitMQ.WatermarkEkleme
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(Sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")) });
-
+            services.AddSingleton<RabbitMQPublisher>();
             services.AddSingleton<RabbitMQClientService>();
 
             services.AddDbContext<AppDbContext>(options => {
