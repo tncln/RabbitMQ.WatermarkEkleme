@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyRabbitMQWeb.Watermark.BackgroundServices;
 
 namespace RabbitMQ.WatermarkEkleme
 {
@@ -34,7 +35,7 @@ namespace RabbitMQ.WatermarkEkleme
             services.AddDbContext<AppDbContext>(options => {
                 options.UseInMemoryDatabase(databaseName: "productDb");
             });
-
+            services.AddHostedService<ImageWatermarkProcessBackgroundService>();//Background servisin eklenmesi 
             services.AddControllersWithViews();
         }
 
